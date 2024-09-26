@@ -1,7 +1,8 @@
-version: "3"
-
 services:
-  cache:
+  redis:
+    build:
+      context: redis-app
+    container_name: "redis-app"
     image: redis:6.2-alpine
     restart: always
     ports:
@@ -11,6 +12,9 @@ services:
       - cache:/data
 
   mongo:
+    build:
+      context: mongo-app
+    container_name: "mongo-app"
     image: mongo
     restart: always
     ports:
@@ -21,4 +25,6 @@ services:
 
 volumes:
   cache:
+    driver: local
+  esdata1:
     driver: local
