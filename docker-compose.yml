@@ -23,8 +23,28 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
 
+  elasticsearch:
+    container_name: "elastic-app"
+    platform: linux/x86_64
+    image: elasticsearch:7.17.24
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+
 volumes:
   cache:
     driver: local
-  esdata1:
+  esdata:
     driver: local

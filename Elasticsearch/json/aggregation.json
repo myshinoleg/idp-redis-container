@@ -1,0 +1,10 @@
+{
+  "size": 0,
+  "aggregations":{
+    "aggr_name":{
+      "filters" : [
+        { "match" : {"field": "skill"}}
+      ]
+    }
+  }
+}

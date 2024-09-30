@@ -1,0 +1,21 @@
+{
+  "mappings": {
+    "_doc": {
+      "properties": {
+        "birthdate": {
+          "type": "date",
+          "format": "dateOptionalTime"
+        },
+        "location": {
+          "type": "geo_point"
+        },
+        "name": {
+          "type": "string"
+        },
+        "skill": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
